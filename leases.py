@@ -144,7 +144,7 @@ def select_active_leases(leases_db, as_of_ts):
 
 with open("/var/lib/dhcp/dhcpd.leases", mode="r", encoding="utf-8") as file:
     leases = parse_leases_file(file)
-    now_string = str(datetime.datetime.now(datetime.UTC)).split('.', maxsplit=1)[0]
+    now_string = str(datetime.datetime.utcnow()).split('.', maxsplit=1)[0]
     now = datetime.datetime.strptime(now_string, '%Y-%m-%d %H:%M:%S')
 
     report_dataset = select_active_leases(leases, now)
